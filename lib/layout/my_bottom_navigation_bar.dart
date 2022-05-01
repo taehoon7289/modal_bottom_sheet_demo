@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:modal_bottom_sheet_demo/constants.dart';
 import 'package:modal_bottom_sheet_demo/controller/my_bottom_navigation_bar_controller.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
@@ -31,6 +31,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                 type: BottomNavigationBarType.fixed,
                 onTap: (val) {
                   myBottomNavigationBarController.updateCurrentIndex(val);
+                  print('dd');
                 },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
@@ -48,21 +49,45 @@ class MyBottomNavigationBar extends StatelessWidget {
           flex: 1,
           child: ElevatedButton(
             onPressed: () {
-              // showBarModalBottomSheet(
-              //     expand: false,
-              //     context: context,
-              //     backgroundColor: Colors.transparent,
-              //     builder: (context) => Container(
-              //           child: Column(
-              //             mainAxisSize: MainAxisSize.min,
-              //             children: [
-              //               Text('00000000'),
-              //               Text('11111111'),
-              //               Text('2222222'),
-              //             ],
-              //           ),
-              //         ));
-              myBottomNavigationBarController.updateBottomSheetFlag();
+              print('ElevatedButton onPressed!!');
+              showBottomSheet(
+                  // expand: false,
+                  context: context,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: ListView.separated(
+                              scrollDirection: Axis.vertical,
+                              itemCount: Constants.bottomMenus.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    print('val');
+                                  },
+                                  child: Container(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    alignment: Alignment.centerLeft,
+                                    // height: 30,
+                                    child: Text(
+                                      Constants.bottomMenus[index],
+                                    ),
+                                  ),
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return Divider();
+                              },
+                            ),
+                          ),
+                        ],
+                      ));
+
+              myBottomNavigationBarController.updateMenuSheetFlag();
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,

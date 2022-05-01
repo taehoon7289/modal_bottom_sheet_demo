@@ -14,7 +14,7 @@ class MyBottomSheet extends StatelessWidget {
         color: Colors.pink,
         child: Center(
           child: Text(
-              '${myBottomNavigationBarController.bottomSheetFlag.value}dddddddddd'),
+              '${myBottomNavigationBarController.menuSheetFlag.value}dddddddddd'),
         )));
   }
 }

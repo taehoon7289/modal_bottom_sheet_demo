@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet_demo/constants.dart';
+import 'package:modal_bottom_sheet_demo/controller/my_bottom_navigation_bar_controller.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_app_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_bottom_navigation_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_tab_bar_delegate.dart';
-import 'package:modal_bottom_sheet_demo/widget/my_bottom_sheet.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       child: GetMaterialApp(
         title: '모달연습',
-        // debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: MyHome(),
       ),
     );
@@ -34,6 +34,8 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyBottomNavigationBarController myBottomNavigationBarController =
+        MyBottomNavigationBarController();
     return SafeArea(
       child: DefaultTabController(
         length: Constants.menus.length,
@@ -50,21 +52,35 @@ class MyHome extends StatelessWidget {
                 delegate: MyTabBarDelegate(),
               ),
               SliverFillRemaining(
-                child: TabBarView(
+                child: Stack(
                   children: [
-                    for (String menu in Constants.menus)
-                      Center(
-                        child: Container(
-                          child: Text('${menu}'),
-                        ),
-                      )
+                    TabBarView(
+                      children: [
+                        for (String menu in Constants.menus)
+                          Center(
+                            child: Container(
+                              child: Text('${menu}'),
+                            ),
+                          )
+                      ],
+                    ),
+                    Obx(() =>
+                        myBottomNavigationBarController.menuSheetFlag.value
+                            ? Container(
+                                child: Center(
+                                  child: Expanded(
+                                    flex: 1,
+                                    child: Text('여기여기'),
+                                  ),
+                                ),
+                              )
+                            : Container()),
                   ],
                 ),
               )
             ],
           ),
           bottomNavigationBar: MyBottomNavigationBar(),
-          // bottomSheet: MyBottomSheet(),
         ),
       ),
     );
