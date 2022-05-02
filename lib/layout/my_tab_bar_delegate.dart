@@ -22,7 +22,7 @@ class MyTabBarDelegate extends SliverPersistentHeaderDelegate {
         unselectedLabelColor: Colors.black,
         labelColor: Colors.lightBlue,
         tabs: [
-          for (String menu in Constants.menus)
+          for (String menu in Constants.MENU_LIST)
             Tab(
               child: Container(
                 // padding: const EdgeInsets.all(8),

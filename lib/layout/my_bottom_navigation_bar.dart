@@ -49,42 +49,49 @@ class MyBottomNavigationBar extends StatelessWidget {
           flex: 1,
           child: ElevatedButton(
             onPressed: () {
-              print('ElevatedButton onPressed!!');
               showBottomSheet(
                   // expand: false,
+                  enableDrag: false,
                   context: context,
                   backgroundColor: Colors.transparent,
-                  builder: (context) => Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: ListView.separated(
-                              scrollDirection: Axis.vertical,
-                              itemCount: Constants.bottomMenus.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    print('val');
-                                  },
-                                  child: Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    alignment: Alignment.centerLeft,
-                                    // height: 30,
-                                    child: Text(
-                                      Constants.bottomMenus[index],
-                                    ),
-                                  ),
-                                );
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return Divider();
-                              },
+                  builder: (context) => Container(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                color: Color.fromRGBO(80, 80, 80, 0.3),
+                              ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              height: Constants.BOTTOM_MENU_LIST.length * 60,
+                              child: ListView.separated(
+                                scrollDirection: Axis.vertical,
+                                itemCount: Constants.BOTTOM_MENU_LIST.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      print('val');
+                                    },
+                                    child: Container(
+                                      color: Colors.red,
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      alignment: Alignment.centerLeft,
+                                      // height: 30,
+                                      child: Text(
+                                        Constants.BOTTOM_MENU_LIST[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return Divider();
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                       ));
 
               myBottomNavigationBarController.updateMenuSheetFlag();

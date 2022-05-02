@@ -38,7 +38,7 @@ class MyHome extends StatelessWidget {
         MyBottomNavigationBarController();
     return SafeArea(
       child: DefaultTabController(
-        length: Constants.menus.length,
+        length: Constants.MENU_LIST.length,
         child: Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -56,7 +56,7 @@ class MyHome extends StatelessWidget {
                   children: [
                     TabBarView(
                       children: [
-                        for (String menu in Constants.menus)
+                        for (String menu in Constants.MENU_LIST)
                           Center(
                             child: Container(
                               child: Text('${menu}'),
