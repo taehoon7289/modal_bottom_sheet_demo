@@ -72,20 +72,16 @@ class MyHome extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
-                    Obx(() {
-                      if (MyBottomNavigationBarController
-                          .to.menuSheetFlag.value) {
-                        return Center(
-                          child: Expanded(
-                            child: Container(
-                              color: Colors.red,
-                            ),
-                          ),
-                        );
-                      } else {
-                        return Container();
-                      }
-                    }),
+                    Obx(() =>
+                        MyBottomNavigationBarController.to.menuSheetFlag.value
+                            ? Center(
+                                child: Expanded(
+                                  child: Container(
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              )
+                            : Container()),
                   ],
                 ),
               )
