@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MyBottomNavigationBarController());
     Get.put(MyTabBarController());
+    Get.put(MyBottomNavigationBarController());
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
@@ -73,9 +73,8 @@ class MyHome extends StatelessWidget {
                     //   ),
                     // ),
                     Obx(() {
-                      if (Get.find<MyBottomNavigationBarController>()
-                          .menuSheetFlag
-                          .value) {
+                      if (MyBottomNavigationBarController
+                          .to.menuSheetFlag.value) {
                         return Center(
                           child: Expanded(
                             child: Container(

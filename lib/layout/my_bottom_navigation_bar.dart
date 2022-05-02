@@ -21,16 +21,14 @@ class MyBottomNavigationBar extends StatelessWidget {
         Expanded(
           flex: 4,
           child: Obx(() => BottomNavigationBar(
-                currentIndex: Get.find<MyBottomNavigationBarController>()
-                    .currentIndex
-                    .value,
+                currentIndex:
+                    MyBottomNavigationBarController.to.currentIndex.value,
                 elevation: 0,
                 selectedItemColor: Colors.lightBlueAccent,
                 unselectedItemColor: Colors.grey,
                 type: BottomNavigationBarType.fixed,
                 onTap: (val) {
-                  Get.find<MyBottomNavigationBarController>()
-                      .updateCurrentIndex(val);
+                  MyBottomNavigationBarController.to.updateCurrentIndex(val);
                 },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
@@ -93,7 +91,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                         ),
                       ));
 
-              myBottomNavigationBarController.updateMenuSheetFlag();
+              MyBottomNavigationBarController.to.updateMenuSheetFlag();
             },
             style: ElevatedButton.styleFrom(
               elevation: 0,

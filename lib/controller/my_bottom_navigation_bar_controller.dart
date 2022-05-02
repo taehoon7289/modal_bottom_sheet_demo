@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 
 class MyBottomNavigationBarController extends GetxController {
+  static MyBottomNavigationBarController get to =>
+      Get.find<MyBottomNavigationBarController>();
+
   RxInt currentIndex = 0.obs;
   RxBool menuSheetFlag = false.obs;
 
@@ -14,10 +17,8 @@ class MyBottomNavigationBarController extends GetxController {
 
   @override
   void onInit() {
-    print('onInit');
-    ever(currentIndex, (_) {
-      print('currentIndex $_ currentIndex??????????');
-    });
-    ever(menuSheetFlag, (_) => print('ssdfs $_ dkjfsdfjsld??????????'));
+    ever(currentIndex, (_) => print('currentIndex :: $_'));
+    ever(menuSheetFlag, (_) => print('menuSheetFlag :: $_'));
+    super.onInit();
   }
 }
