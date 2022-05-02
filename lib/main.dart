@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet_demo/constants.dart';
 import 'package:modal_bottom_sheet_demo/controller/my_bottom_navigation_bar_controller.dart';
+import 'package:modal_bottom_sheet_demo/controller/my_tab_bar_controller.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_app_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_bottom_navigation_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_tab_bar_delegate.dart';
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(MyBottomNavigationBarController());
+    Get.put(MyTabBarController());
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
@@ -34,8 +37,6 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyBottomNavigationBarController myBottomNavigationBarController =
-        MyBottomNavigationBarController();
     return SafeArea(
       child: DefaultTabController(
         length: Constants.MENU_LIST.length,
@@ -64,17 +65,28 @@ class MyHome extends StatelessWidget {
                           )
                       ],
                     ),
-                    Obx(() =>
-                        myBottomNavigationBarController.menuSheetFlag.value
-                            ? Container(
-                                child: Center(
-                                  child: Expanded(
-                                    flex: 1,
-                                    child: Text('여기여기'),
-                                  ),
-                                ),
-                              )
-                            : Container()),
+                    // Center(
+                    //   child: Expanded(
+                    //     child: Container(
+                    //       color: Colors.red,
+                    //     ),
+                    //   ),
+                    // ),
+                    Obx(() {
+                      if (Get.find<MyBottomNavigationBarController>()
+                          .menuSheetFlag
+                          .value) {
+                        return Center(
+                          child: Expanded(
+                            child: Container(
+                              color: Colors.red,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return Container();
+                      }
+                    }),
                   ],
                 ),
               )

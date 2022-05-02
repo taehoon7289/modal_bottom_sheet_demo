@@ -11,4 +11,13 @@ class MyBottomNavigationBarController extends GetxController {
   void updateMenuSheetFlag() {
     menuSheetFlag.value = !menuSheetFlag.value;
   }
+
+  @override
+  void onInit() {
+    print('onInit');
+    ever(currentIndex, (_) {
+      print('currentIndex $_ currentIndex??????????');
+    });
+    ever(menuSheetFlag, (_) => print('ssdfs $_ dkjfsdfjsld??????????'));
+  }
 }

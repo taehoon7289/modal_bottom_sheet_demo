@@ -8,8 +8,6 @@ class MyBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyBottomNavigationBarController myBottomNavigationBarController =
-        MyBottomNavigationBarController();
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -23,15 +21,16 @@ class MyBottomNavigationBar extends StatelessWidget {
         Expanded(
           flex: 4,
           child: Obx(() => BottomNavigationBar(
-                currentIndex:
-                    myBottomNavigationBarController.currentIndex.value,
+                currentIndex: Get.find<MyBottomNavigationBarController>()
+                    .currentIndex
+                    .value,
                 elevation: 0,
                 selectedItemColor: Colors.lightBlueAccent,
                 unselectedItemColor: Colors.grey,
                 type: BottomNavigationBarType.fixed,
                 onTap: (val) {
-                  myBottomNavigationBarController.updateCurrentIndex(val);
-                  print('dd');
+                  Get.find<MyBottomNavigationBarController>()
+                      .updateCurrentIndex(val);
                 },
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
@@ -59,7 +58,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Container(
-                                color: Color.fromRGBO(80, 80, 80, 0.3),
+                                color: Color.fromRGBO(0, 0, 0, 0.7),
                               ),
                             ),
                             Container(

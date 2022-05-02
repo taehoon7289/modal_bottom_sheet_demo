@@ -7,14 +7,12 @@ class MyBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyBottomNavigationBarController myBottomNavigationBarController =
-        MyBottomNavigationBarController();
     return Obx(() => Container(
         height: 500,
         color: Colors.pink,
         child: Center(
           child: Text(
-              '${myBottomNavigationBarController.menuSheetFlag.value}dddddddddd'),
+              '${Get.find<MyBottomNavigationBarController>().menuSheetFlag.value}dddddddddd'),
         )));
   }
 }
