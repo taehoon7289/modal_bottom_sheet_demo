@@ -46,8 +46,11 @@ class MyBottomNavigationBar extends StatelessWidget {
           flex: 1,
           child: ElevatedButton(
             onPressed: () {
+              // ScaffoldMessenger.of(context).clearSnackBars();
+              // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              //   content: Text('${DateTime.now()}'),
+              // ));
               showBottomSheet(
-                  // expand: false,
                   enableDrag: false,
                   context: context,
                   backgroundColor: Colors.transparent,

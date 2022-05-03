@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.1
   modal_bottom_sheet: ^2.0.1
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -60,9 +61,17 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/164938407091284242.png
+    - assets/images/164975564132830983.jpg
+    - assets/images/164999763516031480.jpg
+    - assets/images/165042947715563845.jpg
+    - assets/images/165052515596612914.png
+    - assets/images/165094137107207146.jpg
+    - assets/images/165113377324372543.jpg
+    - assets/images/165120003833373755.jpg
+    - assets/images/165122001410579646.jpg
+    - assets/images/165132983667855670.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

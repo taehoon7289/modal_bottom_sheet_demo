@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet_demo/constants.dart';
+import 'package:modal_bottom_sheet_demo/vo/menu_body_widget.dart';
 
 class MyTabBarDelegate extends SliverPersistentHeaderDelegate {
   const MyTabBarDelegate();
@@ -22,14 +23,12 @@ class MyTabBarDelegate extends SliverPersistentHeaderDelegate {
         unselectedLabelColor: Colors.black,
         labelColor: Colors.lightBlue,
         tabs: [
-          for (String menu in Constants.MENU_LIST)
+          for (MenuBodyWidget menu in Constants.MENU_BODY_WIDGET_LIST)
             Tab(
               child: Container(
                 // padding: const EdgeInsets.all(8),
                 color: Colors.white,
-                child: Text(
-                  '$menu',
-                ),
+                child: Text(menu.title),
               ),
             ),
         ],

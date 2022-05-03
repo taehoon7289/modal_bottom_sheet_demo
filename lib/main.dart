@@ -3,10 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:modal_bottom_sheet_demo/constants.dart';
 import 'package:modal_bottom_sheet_demo/controller/my_bottom_navigation_bar_controller.dart';
+import 'package:modal_bottom_sheet_demo/controller/my_home_popular_controller.dart';
 import 'package:modal_bottom_sheet_demo/controller/my_tab_bar_controller.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_app_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_bottom_navigation_bar.dart';
 import 'package:modal_bottom_sheet_demo/layout/my_tab_bar_delegate.dart';
+import 'package:modal_bottom_sheet_demo/vo/menu_body_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,8 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /* 컨트롤러 등록 */
     Get.put(MyTabBarController());
     Get.put(MyBottomNavigationBarController());
+    Get.put(MyHomePopularController());
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.white,
@@ -39,7 +43,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
-        length: Constants.MENU_LIST.length,
+        length: Constants.MENU_BODY_WIDGET_LIST.length,
         child: Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -57,12 +61,9 @@ class MyHome extends StatelessWidget {
                   children: [
                     TabBarView(
                       children: [
-                        for (String menu in Constants.MENU_LIST)
-                          Center(
-                            child: Container(
-                              child: Text('${menu}'),
-                            ),
-                          )
+                        for (MenuBodyWidget menu
+                            in Constants.MENU_BODY_WIDGET_LIST)
+                          menu.widget
                       ],
                     ),
                     // Center(
