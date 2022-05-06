@@ -30,7 +30,11 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: '모달연습!!',
         debugShowCheckedModeBanner: false,
-        home: MyHome(),
+        // home: MyHome(),
+        initialRoute: '/',
+        routes: {
+          '/': (_) => MyHome(),
+        },
       ),
     );
   }

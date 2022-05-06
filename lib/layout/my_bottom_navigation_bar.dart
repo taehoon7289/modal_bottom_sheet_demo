@@ -73,7 +73,7 @@ class MyBottomNavigationBar extends StatelessWidget {
                                       print('val');
                                     },
                                     child: Container(
-                                      color: Colors.red,
+                                      color: Colors.green,
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 10),
                                       alignment: Alignment.centerLeft,
