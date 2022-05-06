@@ -50,27 +50,61 @@ class MyHomePopular extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           color: Color.fromRGBO(0, 0, 0, 0.7),
-                          child: Obx(() => Text(
-                                '${MyHomePopularController.to.currentIndex.value + 1} / ${Constants.HOME_POPULAR_BANNER_IMAGE_LIST.length}',
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10,
-                                ),
-                              )),
+                          child: Obx(
+                            () => Text(
+                              '${MyHomePopularController.to.currentIndex.value + 1} / ${Constants.HOME_POPULAR_BANNER_IMAGE_LIST.length}',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     )
                   ],
-                )
+                ),
               ],
             ),
           ),
         ),
-        // Expanded(
-        //   flex: 1,
-        //   child: Container(),
-        // )
+        Expanded(
+          // flex: 1,
+          child: Center(
+            child: TextButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.add),
+              label: Text('ddfsdfasdf'),
+              style: TextButton.styleFrom(onSurface: Colors.black),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: ButtonBar(
+              buttonPadding: EdgeInsets.all(100),
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text('OPOPO'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('dd1'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('dd2'),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('dd3'),
+                ),
+              ],
+            ),
+          ),
+        )
       ],
     );
   }
