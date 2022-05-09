@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
       child: GetMaterialApp(
-        title: '모달연습!!!!!!!@@',
+        title: '모달연습!!!!!!!@@#',
         debugShowCheckedModeBanner: false,
         // home: MyHome(),
         initialRoute: '/',
